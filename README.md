@@ -7,6 +7,7 @@ Generamba for module generation.
 
 ## 🚀 Getting Started
 1. Clone the repository.
-2. Run ```bash
+2. Run 
+```bash
 pod install
 ```
