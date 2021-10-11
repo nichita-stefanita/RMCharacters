@@ -13,10 +13,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        if #available(iOS 13.0, *) {
+            // Disable DarkMode
+            window?.overrideUserInterfaceStyle = .light
+        }
+        
+        setRootController()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -47,6 +51,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
+    private func setRootController() {
+        let rootController = CharacterListViewController.instantiate()
+        let navigationController = UINavigationController(rootViewController: rootController)
+        
+        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+        navigationController.navigationItem.largeTitleDisplayMode = .always
+        navigationController.navigationBar.tintColor = .white
+        
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+    }
 }
 
