@@ -106,10 +106,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ywj-iF-nG7">
-                                <rect key="frame" x="0.0" y="234" width="375" height="433"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ywj-iF-nG7">
+                                <rect key="frame" x="0.0" y="219" width="375" height="448"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="FmW-vr-94T">
+                                <rect key="frame" x="177.5" y="433" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="356683000"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -117,16 +120,19 @@
                             <constraint firstItem="356683000" firstAttribute="bottom" secondItem="Ywj-iF-nG7" secondAttribute="bottom" id="3a7-Zh-C2K"/>
                             <constraint firstItem="8iH-qH-Xnh" firstAttribute="top" secondItem="356683000" secondAttribute="top" constant="20" id="6FP-Pa-yfS"/>
                             <constraint firstItem="356683000" firstAttribute="trailing" secondItem="i7a-vh-tCi" secondAttribute="trailing" constant="20" id="ALY-R4-iHm"/>
-                            <constraint firstItem="Ywj-iF-nG7" firstAttribute="top" secondItem="i7a-vh-tCi" secondAttribute="bottom" constant="20" id="Blp-tp-ReQ"/>
+                            <constraint firstItem="Ywj-iF-nG7" firstAttribute="top" secondItem="i7a-vh-tCi" secondAttribute="bottom" constant="5" id="Blp-tp-ReQ"/>
                             <constraint firstItem="356683000" firstAttribute="trailing" secondItem="8iH-qH-Xnh" secondAttribute="trailing" constant="20" id="Ici-OU-SVM"/>
                             <constraint firstItem="Ywj-iF-nG7" firstAttribute="leading" secondItem="356683000" secondAttribute="leading" id="Kdh-pp-5ll"/>
                             <constraint firstItem="8iH-qH-Xnh" firstAttribute="leading" secondItem="356683000" secondAttribute="leading" constant="20" id="Q0k-87-NQP"/>
+                            <constraint firstItem="FmW-vr-94T" firstAttribute="centerY" secondItem="Ywj-iF-nG7" secondAttribute="centerY" id="TzI-fs-aFl"/>
                             <constraint firstItem="356683000" firstAttribute="trailing" secondItem="Ywj-iF-nG7" secondAttribute="trailing" id="ZH3-60-AUU"/>
+                            <constraint firstItem="FmW-vr-94T" firstAttribute="centerX" secondItem="Ywj-iF-nG7" secondAttribute="centerX" id="dvh-HF-sCl"/>
                             <constraint firstItem="i7a-vh-tCi" firstAttribute="leading" secondItem="356683000" secondAttribute="leading" constant="20" id="suH-hs-Cna"/>
                             <constraint firstItem="i7a-vh-tCi" firstAttribute="top" secondItem="8iH-qH-Xnh" secondAttribute="bottom" constant="20" id="tUF-Nt-njq"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="FmW-vr-94T" id="MrJ-3M-Qhi"/>
                         <outlet property="alsoFrom" destination="i7a-vh-tCi" id="Ais-vR-4Nl"/>
                         <outlet property="firstSeenIn" destination="zGD-tm-aC5" id="ka5-2V-Xkf"/>
                         <outlet property="lastKnownLocation" destination="9rz-yt-1sO" id="beW-cG-6Xd"/>

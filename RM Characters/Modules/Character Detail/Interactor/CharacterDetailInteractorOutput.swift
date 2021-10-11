@@ -1,5 +1,6 @@
 import Foundation
 
-protocol CharacterDetailInteractorOutput: class {
-
+protocol CharacterDetailInteractorOutput: AnyObject {
+    func didReceive(episode: Episode)
+    func didReceiveNeighbours(characters: [Character])
 }

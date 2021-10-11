@@ -14,6 +14,7 @@ final class CharacterDetailViewController: UIViewController, StoryboardInstantia
     var moduleInput: CharacterDetailModuleInput!
     
     private var character: Character!
+    private var neighboursList: [Character] = []
     
     @IBOutlet weak var moreCharactersTableView: UITableView!
     @IBOutlet weak var photoImageView: UIImageView!
@@ -23,10 +24,13 @@ final class CharacterDetailViewController: UIViewController, StoryboardInstantia
     @IBOutlet weak var status: UILabel!
     @IBOutlet weak var alsoFrom: UILabel!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         output.viewIsReady()
+        output.didReceive(character: character)
     }
     
     private func fillCharacterInfo() {
@@ -61,5 +65,39 @@ extension CharacterDetailViewController: CharacterDetailViewInput {
         fillCharacterInfo()
         
         navigationController?.navigationBar.tintColor = .black
+        
+        moreCharactersTableView.register(CharacterTableViewCell.self)
+        moreCharactersTableView.rowHeight = 150
+        moreCharactersTableView.separatorStyle = .none
+        
+        activityIndicator.startAnimating()
+    }
+    
+    func fillEpisodeName(episode: Episode) {
+        firstSeenIn.text = episode.name
+    }
+    
+    func fillCharacterList(characters: [Character]) {
+        neighboursList = characters
+        moreCharactersTableView.dataSource = self
+        moreCharactersTableView.delegate = self
+        moreCharactersTableView.reloadData()
+        
+        activityIndicator.stopAnimating()
+    }
+}
+
+
+extension CharacterDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return neighboursList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CharacterTableViewCell", for: indexPath) as! CharacterTableViewCell
+        let character = neighboursList[indexPath.row]
+        cell.cellSetup(model: character)
+        
+        return cell
     }
 }

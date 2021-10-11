@@ -1,5 +1,5 @@
 import Foundation
 
-protocol CharacterDetailModuleInput: class {
+protocol CharacterDetailModuleInput: AnyObject {
 
 }
